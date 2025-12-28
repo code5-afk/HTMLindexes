@@ -102,33 +102,3 @@ HTML
 It forces an explicit order (e.g., jump from header to footer, skipping content). It creates a confusing, jumping navigation experience for screen reader users.
 5. The "Shadow" Index: Shadow DOM & Slotting
 In modern Web Components, "indexing" refers to how Light DOM content is projected into the Shadow DOM.
-HTML
-
-<user-card>
-  <span slot="username">JohnDoe</span> <span slot="avatar">img.jpg</span>   </user-card>
-The browser creates a Flat Tree index internally to render this. If you mess up the slots, the content exists in the DOM but is visually un-indexed (invisible).
-6. Best Practices & Security
-The "Clean URL" Strategy
-Don't serve contact.html. Serve /contact/.
-Create a folder named contact.
-Put your file inside as contact/index.html.
-Result: URL is example.com/contact/ (Cleaner, professional).
-Single Page Applications (SPA) & The Fallback Index
-In React/Vue/Angular router apps, real files don't exist for /dashboard or /settings.
-You must configure the server (Rewrites) to serve index.html for every unknown route.
-SPA Rewrite Logic:
-"Request: /user/123 -> Does file exist? No -> Serve index.html -> JS Router takes over."
-Noindex X-Robots-Tag (Header)
-Sometimes you can't touch the HTML. You can send indexing rules via HTTP Headers:
-HTTP
-
-HTTP/1.1 200 OKX-Robots-Tag: noindex
-Useful for PDF files or images you don't want in Google Images.
-📜 Cheat Sheet
-index.html: Default file served by web servers for a directory.
-<meta name="robots" content="noindex">: Keeps Google out.
-tabindex="0": Makes non-buttons focusable.
-tabindex="-1": Makes elements clickable via JS, but skippable via Tab.
-Options -Indexes: Prevents hackers from seeing your file list.
-Authored by a developer who learned tabindex > 0 is a sin the hard way.
-
